@@ -2,3 +2,7 @@
   margin: 0;
   padding: 0;
 }
+.charImg>img{
+  height: 400px;
+  width: 400px;
+}
