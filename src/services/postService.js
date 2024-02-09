@@ -1,5 +1,6 @@
+import {apiService} from "./apiService";
 
 const PostService = {
-    getAll:'DFGS',
-    create:'SDGSD'
+    getAll:=>apiService.get(urls.posts),
+    create:=>apiService.post(urls.posts, data)
 }
