@@ -1,4 +1,8 @@
 const axios = require("axios");
 
 
-axios.create({baseURL})
+const apiService =  axios.create({baseURL})
+
+export{
+    apiService
+}
