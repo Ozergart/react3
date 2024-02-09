@@ -5,3 +5,7 @@ const posts = '/posts'
 const urls = {
     posts
 }
+export {
+    urls,
+    baseURL
+}
