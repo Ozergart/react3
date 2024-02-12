@@ -2,10 +2,10 @@ import React from 'react';
 import {useForm} from "react-hook-form";
 import {postService} from "../../services/postService";
 
-const UserForm = () => {
+const UserForm = ({setUsers}) => {
     const {reset,register,handleSubmit} =  useForm()
     const save = (post) =>{
-    postService.post(post).then(({data})=> console.log(data))
+    postService.post(post).then(({data})=> setUsers(prev=>[...prev,data]));
     }
     return (
         <div>
