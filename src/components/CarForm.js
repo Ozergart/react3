@@ -3,10 +3,10 @@ import {useForm} from "react-hook-form";
 import {PostService} from "../services/PostServ";
 import axios from "axios";
 
-const CarForm = () => {
+const CarForm = ({setcars}) => {
     const {register,reset,handleSubmit} = useForm()
 const save = (car) =>{
-    PostService.post(car).then(({data})=> console.log(data))
+    PostService.post(car).then(({data})=>  setcars(...prev=>[...prev, data]))
 
 }
     return (

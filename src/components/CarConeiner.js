@@ -12,7 +12,7 @@ const CarConeiner = () => {
 
     return (
         <div>
-            <CarForm/>
+            <CarForm setcars={setCars()}/>
             <hr/>
             <Cars cars={cars}/>
         </div>
