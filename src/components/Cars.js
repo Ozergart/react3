@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+
 import Car from "./Car";
 
 
-const Cars = ({cars}) => {
+const Cars = ({cars, setCarForUpdate, setCarForDelete}) => {
 
     return (
         <div>
-           Cars
-            {/*{cars.map(car=><Car key={car.brand} car={car}/>)}*/}
+            {cars.map(car=><Car key={car.id} car={car} setCarForUpdate={setCarForUpdate} setCarForDelete={setCarForDelete}/>)}
         </div>
     );
 };
