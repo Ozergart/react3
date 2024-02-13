@@ -10,7 +10,7 @@ const PostContainer = () => {
 
     useEffect(() => {
         PostService.getAll().then(({data})=>setPosts(data))
-    }, []);
+    }, [trigger]);
 
 
 
