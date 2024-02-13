@@ -3,12 +3,12 @@ import {useForm} from "react-hook-form";
 import {PostService} from "../services/postService";
 import {post} from "axios";
 
-const PostForm = ({setTrigger}) => {
+const PostForm = ({setTrigger, setPosts}) => {
 
     const {reset, handleSubmit, register} = useForm()
 
     const save = (post) =>{
-        PostService.create(post)
+        PostService.create(post).then(({data})=> setPosts(prev=>[...prev, data]))
         setTrigger(prev=>!prev)
         reset()
     }
