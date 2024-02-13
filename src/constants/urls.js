@@ -7,5 +7,8 @@ const comments = '/comments'
 const urls = {
     todos: todos,
     albums: albums,
-    comments:comments
+    comments: {
+        base: comments,
+        byId: comments+'/'
+    }
 }
