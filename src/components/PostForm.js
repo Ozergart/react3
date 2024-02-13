@@ -9,7 +9,8 @@ const PostForm = ({setTrigger}) => {
 
     const save = (post) =>{
         PostService.create(post)
-        setTrigger
+        setTrigger(prev=>!prev)
+        reset()
     }
     return (
         <div>
