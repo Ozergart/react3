@@ -4,6 +4,7 @@ import {MainLayout} from "./layouts/MainLayout";
 import {TodosPage} from "./pages/TodosPage";
 import {AlbumsPage} from "./pages/AlbumsPage";
 import {CommentsPage} from "./pages/CommentsPage";
+import {PostPage} from "./pages/PostPage";
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,9 @@ const router = createBrowserRouter([
             },
             {
                 path: 'comments', element: <CommentsPage/>
+            },
+            {
+                path: 'post', element: <PostPage/>
             }
         ]
     }])

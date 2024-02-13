@@ -7,7 +7,8 @@ const Services = {
     comments:{
         all: ()=>ApiServices.get(urls.comments.base),
         byId: (id)=>ApiServices.get(urls.comments.byId(id))
-    }
+    },
+    posts: (id)=>ApiServices.get(urls.posts.buId(id))
 }
 export {
     Services

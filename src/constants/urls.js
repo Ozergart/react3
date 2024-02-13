@@ -10,6 +10,9 @@ const urls = {
     comments: {
         base: comments,
         byId: (id) => `${comments}/${id}`
+    },
+    posts:{
+      buId: (id)=> `/posts/${id}`
     }
 }
 export {
