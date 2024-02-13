@@ -1,11 +1,11 @@
 import React from 'react';
 
-const App = () => {
+const TodosPage = () => {
     return (
         <div>
-          
+            TodosPage
         </div>
     );
 };
 
-export default App;
+export {TodosPage}
