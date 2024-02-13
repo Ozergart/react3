@@ -20,7 +20,7 @@ const router = createBrowserRouter([
                 path: 'comments', element: <CommentsPage/>
             },
             {
-                path: 'post', element: <PostPage/>
+                path: 'post/:postId', element: <PostPage/>
             }
         ]
     }])

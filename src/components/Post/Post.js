@@ -2,25 +2,21 @@ import React, {useEffect, useState} from 'react';
 
 import {Services} from "../../Services/Services";
 import css from './Post.module.css'
+import {useParams} from "react-router-dom";
 const Post = () => {
 
 
-    const str1 = window.location.search;
 
-    const url1 = new URLSearchParams(str1);
-
-    const paramValue = url1.get('postId');
-
-
-    const [Post, setPost] = useState([])
+    const { postId  } = useParams()
+    const [Post, setPost] = useState({})
     useEffect(() => {
-        Services.posts(paramValue).then(({data})=> setPost(data))
+            Services.posts(postId).then(({data}) => setPost(data));
     }, []);
 
-    const {userid, id, title, body} = Post
+    const {userId, id, title, body} = Post
     return (
         <div className={css.Post}>
-            <div>userid : {userid}</div>
+            <div>userid : {userId}</div>
             <div>id : {id}</div>
             <div>title : {title}</div>
             <div>body : {body}</div>
