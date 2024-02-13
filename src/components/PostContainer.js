@@ -5,10 +5,12 @@ import {PostService} from "../services/postService";
 
 const PostContainer = () => {
 
-    const [posts, setPosts] = useState()
+    const [posts, setPosts] = useState([])
     useEffect(() => {
-        PostService.getAll(({data})=>setPosts(data))
+        PostService.getAll().then(({data})=>setPosts(data))
     }, []);
+
+
 
 
     return (
