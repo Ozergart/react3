@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import {Services} from "../../Services/Services";
+import {services} from "../../Services/Services";
 import css from './Post.module.css'
 import {useParams} from "react-router-dom";
 const Post = () => {
@@ -8,12 +8,12 @@ const Post = () => {
 
 
     const { postId  } = useParams()
-    const [Post, setPost] = useState({})
+    const [post, setPost] = useState({})
     useEffect(() => {
-            Services.posts(postId).then(({data}) => setPost(data));
+            services.posts(postId).then(({data}) => setPost(data));
     }, []);
 
-    const {userId, id, title, body} = Post
+    const {userId, id, title, body} = post
     return (
         <div className={css.Post}>
             <div>userid : {userId}</div>

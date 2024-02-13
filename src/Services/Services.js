@@ -1,7 +1,7 @@
 import {ApiServices} from "./ApiService";
 import {urls} from "../constants/urls";
 
-const Services = {
+const services = {
     albums: ()=>ApiServices.get(urls.albums),
     todos: ()=>ApiServices.get(urls.todos),
     comments:{
@@ -11,5 +11,5 @@ const Services = {
     posts: (id)=>ApiServices.get(urls.posts.buId(id))
 }
 export {
-    Services
+    services
 }

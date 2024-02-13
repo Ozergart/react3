@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Services} from "../../Services/Services";
+import {services} from "../../Services/Services";
 import {Album} from "./Album";
 
 
@@ -8,7 +8,7 @@ const Albums = () => {
     const [albums, setAlbums] = useState([])
 
     useEffect(() => {
-        Services.albums().then(({data})=>setAlbums(data))
+        services.albums().then(({data})=>setAlbums(data))
     }, []);
     return (
         <div>
