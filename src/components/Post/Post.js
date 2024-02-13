@@ -4,9 +4,6 @@ import {services} from "../../Services/Services";
 import css from './Post.module.css'
 import {useParams} from "react-router-dom";
 const Post = () => {
-
-
-
     const { postId  } = useParams()
     const [post, setPost] = useState({})
     useEffect(() => {
