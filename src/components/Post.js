@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Post = (post) => {
+const Post = ({post}) => {
     const {id, body, title, userId} = post;
     return (
         <div>
