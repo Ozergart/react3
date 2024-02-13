@@ -6,6 +6,8 @@ import {PostService} from "../services/postService";
 const PostContainer = () => {
 
     const [posts, setPosts] = useState([])
+    const [trigger, setTrigger] = useState()
+
     useEffect(() => {
         PostService.getAll().then(({data})=>setPosts(data))
     }, []);
@@ -15,7 +17,7 @@ const PostContainer = () => {
 
     return (
         <div>
-            <PostForm/>
+            <PostForm setTrigger={setTrigger}/>
             <hr/>
             <Posts posts={posts}/>
         </div>

@@ -8,7 +8,8 @@ const PostForm = () => {
     const {reset, handleSubmit, register} = useForm()
 
     const save = (post) =>{
-        PostService.create(post).then(({post})=> console.log(post))
+        PostService.create(post)
+
     }
     return (
         <div>
