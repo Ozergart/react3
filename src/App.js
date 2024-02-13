@@ -1,10 +1,11 @@
 import React from 'react';
-import PostForm from "./components/PostForm";
+
+import PostContainer from "./components/PostContainer";
 
 const App = () => {
     return (
         <div>
-          <PostForm/>
+          <PostContainer
         </div>
     );
 };
