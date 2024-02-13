@@ -9,6 +9,10 @@ const urls = {
     albums: albums,
     comments: {
         base: comments,
-        byId: comments+'/'
+        byId: (id) => `${comments}/${id}`
     }
+}
+export {
+    urls,
+    baseURL
 }
