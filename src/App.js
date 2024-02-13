@@ -5,7 +5,7 @@ import PostContainer from "./components/PostContainer";
 const App = () => {
     return (
         <div>
-          <PostContainer
+          <PostContainer/>
         </div>
     );
 };

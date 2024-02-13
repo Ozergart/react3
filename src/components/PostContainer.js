@@ -7,7 +7,7 @@ const PostContainer = () => {
 
     const [posts, setPosts] = useState()
     useEffect(() => {
-        PostService.getAll()
+        PostService.getAll(({data})=>setPosts(data))
     }, []);
 
 
@@ -15,7 +15,7 @@ const PostContainer = () => {
         <div>
             <PostForm/>
             <hr/>
-            <Posts/>
+            <Posts posts={posts}/>
         </div>
     );
 };
