@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {Services} from "../../Services/Services";
 
-const [albums, setAlbums] = useState()
+const [albums, setAlbums] = useState([])
 
 useEffect(() => {
-    Services.albums().then(({data})=>data)
+    Services.albums().then(({data})=>setAlbums(data))
 }, []);
 
 const Albums = () => {
     return (
         <div>
-            Albums
+            {albums.map(album)}
         </div>
     );
 };
