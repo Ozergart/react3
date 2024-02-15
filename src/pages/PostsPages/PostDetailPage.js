@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {PostDetails} from "../../components/PostComponents/PostDetails";
 import {useLocation, useParams} from "react-router-dom";
+
+import {PostDetails} from "../../components/PostComponents/PostDetails";
 import {postService} from "../../services/postService";
+import {Comments} from "../../components/commentsComponents/Comments";
 
 const PostDetailPage = () => {
 
@@ -21,6 +23,9 @@ const PostDetailPage = () => {
     return (
         <div>
             <PostDetails post={state?.post || postObj}/>
+            <hr/>
+            <h2>Comments</h2>
+            <Comments/>
         </div>
     );
 };
