@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation, useParams} from "react-router-dom";
 
+import css from './post.module.css'
 import {PostDetails} from "../../components/PostComponents/PostDetails";
 import {postService} from "../../services/postService";
 import {Comments} from "../../components/commentsComponents/Comments";
