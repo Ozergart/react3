@@ -12,12 +12,11 @@ import {userService} from "../../services/userService";
 
             useEffect(() => {
                 if(state && state.user) {
-                    return 0;
                 }
                 else {
                     userService.biId(userId).then(({data}) => setUserURL(data))
                 }
-            }, [userId, state]);
+            }, [userId]);
 
         return (
             <div>

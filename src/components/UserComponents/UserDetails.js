@@ -1,12 +1,16 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import css from "./users.module.css"
 
 const UserDetails = ({user}) => {
   const  {id, name, username, email, address} = user
     const navigate = useNavigate();
-    if (!user) {return <div>Loading...</div>}
+
+    const click = (e)=>{
+        e.preventDefault();
+        navigate('posts')
+    }
 
     return (
         <div className={css.user}>
@@ -16,6 +20,7 @@ const UserDetails = ({user}) => {
         <div>email : {email}</div>
         <div>address : {JSON.stringify(address)}</div>
             <button onClick={()=>navigate('posts')}>posts of current user</button>
+            {/*<button onClick={click}>posts of current user</button>*/}
         </div>
     );
 };
