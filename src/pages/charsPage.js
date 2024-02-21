@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import {charService} from "../services";
 import {Chars} from "../components";
 
@@ -9,7 +9,7 @@ const CharsPage = () => {
     const [chars, setChars] = useState([])
     useEffect(() => {
         charService.byIds(charMassive).then(({data})=>setChars(data))
-    }, []);
+    }, [charMassive]);
 
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import css from './Episodes.module.css'
-import {Link, Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useIdCharExtractor} from "../../hooks";
 
 const Episode = ({episod}) => {
