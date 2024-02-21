@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import {charService} from "../services";
 import {Chars} from "../components";
+import {EpisodeNameContext} from "../hoc/episodeNameContext";
 
 const CharsPage = () => {
     const {state:{charMassive}} = useLocation();
@@ -10,6 +11,15 @@ const CharsPage = () => {
     useEffect(() => {
         charService.byIds(charMassive).then(({data})=>setChars(data))
     }, [charMassive]);
+    
+    const {setCharacterPageLocation} = useContext(EpisodeNameContext);
+    useEffect(() => {
+        setCharacterPageLocation(true);
+        return () => {
+            setCharacterPageLocation(false);
+        };
+    }, [setCharacterPageLocation]);
+
 
 
 

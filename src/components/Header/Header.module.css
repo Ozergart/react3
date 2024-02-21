@@ -4,8 +4,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .Header h1{
     color: snow;
     font-size: 70px;
+}
+.Header p{
+    color: snow;
 }
