@@ -18,7 +18,7 @@ const Episode = ({episod}) => {
             <div>name : {name}</div>
             <div>episode : {episode}</div>
             <button onClick={()=>{
-                navigate(`/characters/${id}`, {state:{charMassive, name}})}
+                navigate(`/characters/${charMassive}/${name}`)}
             }>characters</button>
         </div>
     );

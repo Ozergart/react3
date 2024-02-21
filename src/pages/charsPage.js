@@ -1,17 +1,25 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {useLocation} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {charService} from "../services";
 import {Chars} from "../components";
 import {EpisodeNameContext} from "../hoc/episodeNameContext";
 
 const CharsPage = () => {
-    const {state:{charMassive, name}} = useLocation();
+
+
+    const {charMassive,name} = useParams();
 
     const [chars, setChars] = useState([])
+
+
+
     useEffect(() => {
-        setEpisodeNameValue(name)
-        charService.byIds(charMassive).then(({data})=>setChars(data))
-    }, [charMassive]);
+
+    setEpisodeNameValue(name)
+    charService.byIds(charMassive).then(({data})=>setChars(data))
+
+    }, [charMassive, name]);
+
     
     const {setCharacterPageLocation, setEpisodeNameValue} = useContext(EpisodeNameContext);
     useEffect(() => {

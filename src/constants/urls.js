@@ -5,7 +5,10 @@ const episodes = "/episode"
 const chars = "/character"
 
 const urls = {
-    episodes,
+    episodes:{
+        base:episodes,
+        byId: (id)=> `${episodes}/${id}`
+    },
     chars:{
         base:chars,
         byIds: (Ids)=>`${chars}/${Ids}`
