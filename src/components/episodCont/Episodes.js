@@ -13,9 +13,10 @@ const Episodes = () => {
         episodeService.getAll().then(({data})=> {
             setEpisodes(data.results);
             console.log(data);
-
+        if (data.info.prev) {
             const pageP = new URL(data.info.prev).searchParams.get('page');
-            setPrevNext();
+            setPrevNext(prevNext => ({ ...prevNext, prev: pageP }));
+        }
         })
 
     }, []);
