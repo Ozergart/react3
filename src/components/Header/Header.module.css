@@ -1,0 +1,11 @@
+.Header{
+    height: 150px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Header h1{
+    color: snow;
+    font-size: 70px;
+}
