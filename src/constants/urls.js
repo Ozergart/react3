@@ -6,7 +6,10 @@ const chars = "/character"
 
 const urls = {
     episodes,
-    chars
+    chars:{
+        base:chars,
+        byIds: (Ids)=>`${chars}/${Ids}`
+    }
 }
 
 export {

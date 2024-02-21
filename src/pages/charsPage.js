@@ -1,12 +1,21 @@
-import React from 'react';
-import {useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {useLocation, useNavigate} from "react-router-dom";
+import {charService} from "../services";
+import {Chars} from "../components";
 
 const CharsPage = () => {
-    const {state:{charMassive}} = useNavigate();
-    console.log(charMassive);
+    const {state:{charMassive}} = useLocation();
+
+    const [chars, setChars] = useState([])
+    useEffect(() => {
+        charService.byIds(charMassive).then(({data})=>setChars(data))
+    }, []);
+
+
+
     return (
         <div>
-            CharsPage
+            <Chars chars={chars}/>
         </div>
     );
 };
