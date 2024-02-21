@@ -5,14 +5,15 @@ import {Chars} from "../components";
 import {EpisodeNameContext} from "../hoc/episodeNameContext";
 
 const CharsPage = () => {
-    const {state:{charMassive}} = useLocation();
+    const {state:{charMassive, name}} = useLocation();
 
     const [chars, setChars] = useState([])
     useEffect(() => {
+        setEpisodeNameValue(name)
         charService.byIds(charMassive).then(({data})=>setChars(data))
     }, [charMassive]);
     
-    const {setCharacterPageLocation} = useContext(EpisodeNameContext);
+    const {setCharacterPageLocation, setEpisodeNameValue} = useContext(EpisodeNameContext);
     useEffect(() => {
         setCharacterPageLocation(true);
         return () => {
