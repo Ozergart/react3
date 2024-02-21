@@ -24,12 +24,13 @@ const Episodes = () => {
     }
 
     useEffect(() => {
-        episodeService.getAll().then(({data})=> {
+        episodeService.getAll(query.get('page')).then(({data})=> {
             setEpisodes(data.results);
+            console.log(data.results);
             setPrevNext({prev: data.info.prev, next: data.info.next})
         })
 
-    }, []);
+    }, [query]);
 
     return (
         <div className={css.Episodes}>
