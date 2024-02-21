@@ -12,11 +12,7 @@ const Episodes = () => {
     useEffect(() => {
         episodeService.getAll().then(({data})=> {
             setEpisodes(data.results);
-            console.log(data);
-        if (data.info.prev) {
-            const pageP = new URL(data.info.prev).searchParams.get('page');
-            setPrevNext(prevNext => ({ ...prevNext, prev: pageP }));
-        }
+            setPrevNext({prev: data.info.prev, next: data.info.next})
         })
 
     }, []);
