@@ -11,7 +11,7 @@ const CarForm = () => {
         setValue,
     } = useForm();
     const dispatch = useDispatch();
-    const {carForUpdate} = useSelector;
+    const {carForUpdate} = useSelector(state => state.cars);
     useEffect(() => {
         if(carForUpdate){
             setValue("brand", carForUpdate.brand)
@@ -22,14 +22,21 @@ const CarForm = () => {
     const save = (car)=>{
         carService.create(car)
         dispatch(carAction.changeTrigger())
+        reset()
+    }
+    const update = async (car)=>{
+        await carService.update(carForUpdate.id,car)
+        dispatch(carAction.changeTrigger())
+        dispatch(carAction.setCarUpdate(null))
+        reset()
     }
     return (
         <div>
-            <form onSubmit={handleSubmit(save)}>
+            <form onSubmit={handleSubmit(carForUpdate?update:save)}>
                 <input type="text" placeholder={"brand"} {...register("brand")}/>
                 <input type="number" placeholder={"year"} {...register("year")}/>
                 <input type="number" placeholder={"price"} {...register("price")}/>
-                <button>save</button>
+                <button>{carForUpdate?'update':'save'}</button>
             </form>
         </div>
     );

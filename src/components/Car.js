@@ -7,14 +7,14 @@ const Car = ({car}) => {
      const {id, brand, price, year} = car;
 
      const dispatch = useDispatch();
-     const {carForUpdate} = useSelector;
+     const {carForUpdate} = useSelector(state => state.cars);
 
      const remove = async (id)=>{
          await carService.delete(id)
          dispatch(carAction.changeTrigger())
      }
-     const update = ()=>{
-         dispatch(carAction.setCarUpdate({id,brand,price,year}))
+     const update = (car)=>{
+         dispatch(carAction.setCarUpdate(car))
          console.log(carForUpdate);
      }
 
@@ -24,7 +24,7 @@ const Car = ({car}) => {
             <div>brand : {brand}</div>
             <div>price : {price}</div>
             <div>year : {year}</div>
-            <button onClick={update}>update</button>
+            <button onClick={()=>update(car)}>update</button>
             <button onClick={()=>remove(id)}>delete</button>
         </div>
     );
