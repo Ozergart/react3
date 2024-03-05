@@ -7,6 +7,7 @@ const Car = ({car}) => {
      const {id, brand, price, year} = car;
 
      const dispatch = useDispatch();
+     const {carForUpdate} = useSelector;
 
      const remove = async (id)=>{
          await carService.delete(id)
@@ -14,6 +15,7 @@ const Car = ({car}) => {
      }
      const update = ()=>{
          dispatch(carAction.setCarUpdate({id,brand,price,year}))
+         console.log(carForUpdate);
      }
 
     return (

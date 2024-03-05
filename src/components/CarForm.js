@@ -8,11 +8,17 @@ const CarForm = () => {
     const {reset,
         handleSubmit,
         register,
-        setValue} = useForm();
+        setValue,
+    } = useForm();
     const dispatch = useDispatch();
+    const {carForUpdate} = useSelector;
     useEffect(() => {
-
-    }, []);
+        if(carForUpdate){
+            setValue("brand", carForUpdate.brand)
+            setValue("year", carForUpdate.year)
+            setValue("price", carForUpdate.price)
+        }
+    }, [carForUpdate]);
     const save = (car)=>{
         carService.create(car)
         dispatch(carAction.changeTrigger())
