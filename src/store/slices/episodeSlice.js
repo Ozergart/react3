@@ -1,9 +1,21 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {episodeService} from "../../services";
 
 const initialState = {
-    episodeName:""
+    episodeName:"",
+    allEpisodes:[]
 }
+const getAll = createAsyncThunk(
+    "episodeSlice/getAll",
+    async ({page},thunkAPI)=>{
+        try {
+            return episodeService.getAll(page)
 
+        }catch (e){
+
+        }
+    }
+)
 const episodeSlice = createSlice({
     name: "episodeSlice",
     initialState,
@@ -11,11 +23,12 @@ const episodeSlice = createSlice({
         setEpisodeName:(state, actions )=>{
             state.episodeName = actions.payload
         }
+    },
+    extraReducers{
+
     }
 })
-const getAll = createAsyncThunk({
 
-})
 const {reducer:episodeReducer,actions} = episodeSlice
 
 const episodeAction = {...actions}
