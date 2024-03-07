@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {carService} from "../services/carService";
+import React, {useEffect,} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {carAction} from "../store/slices/carSlice";
 import {Car} from "./Car";
@@ -10,8 +9,7 @@ const Cars = () => {
     const dispatch = useDispatch();
     const {cars, trigger} = useSelector(state=>state.cars);
     useEffect(() => {
-        carService.getAll().then(({data})=>dispatch(carAction.setResponse(data)))
-        console.log(cars);
+        dispatch(carAction.getAll())
     }, [trigger]);
     return (
         <div>

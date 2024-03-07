@@ -1,5 +1,4 @@
 import React from 'react';
-import {carService} from "../services/carService";
 import {useDispatch, useSelector} from "react-redux";
 import {carAction} from "../store/slices/carSlice";
 
@@ -9,9 +8,8 @@ const Car = ({car}) => {
      const dispatch = useDispatch();
      const {carForUpdate} = useSelector(state => state.cars);
 
-     const remove = async (id)=>{
-         await carService.delete(id)
-         dispatch(carAction.changeTrigger())
+     const remove =  (id)=>{
+        dispatch(carAction.deleteCar(id))
      }
      const update = (car)=>{
          dispatch(carAction.setCarUpdate(car))
