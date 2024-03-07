@@ -1,18 +1,19 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isPending} from "@reduxjs/toolkit";
 import {episodeService} from "../../services";
 
 const initialState = {
     episodeName:"",
-    allEpisodes:[]
+    allEpisodes:[],
+    loading:false,
+    error:null
 }
 const getAll = createAsyncThunk(
     "episodeSlice/getAll",
     async ({page},thunkAPI)=>{
         try {
             return episodeService.getAll(page)
-
         }catch (e){
-
+            thunkAPI.rejectWithValue(e.data)
         }
     }
 )
@@ -25,7 +26,11 @@ const episodeSlice = createSlice({
         }
     },
     extraReducers:builder => builder
-        .addCase
+        .addCase(getAll.fulfilled,(state, action) => {
+            state.allEpisodes = action.payload
+            state.loading = false
+        })
+        .addMatcher(isPending,getAll)
 
 
 })
