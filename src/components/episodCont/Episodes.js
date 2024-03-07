@@ -4,10 +4,10 @@ import css from './Episodes.module.css'
 import {episodeService} from "../../services";
 import {Episode} from "./Episode";
 import {useSearchParams} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 const Episodes = () => {
 
-    const [episodes, setEpisodes] = useState([])
     const [prevNext, setPrevNext] = useState({prev:null,next:null})
     const [query, setQuery] = useSearchParams({page:"1"})
     const prev =()=>{
@@ -22,8 +22,9 @@ const Episodes = () => {
             return next
         })
     }
-
+    let dispatch = useDispatch;
     useEffect(() => {
+        dispatch()
         episodeService.getAll(query.get('page')).then(({data})=> {
             setEpisodes(data.results);
             console.log(data.results);

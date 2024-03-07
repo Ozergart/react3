@@ -2,17 +2,17 @@ import {createAsyncThunk, createSlice, isPending, isRejected} from "@reduxjs/too
 import {episodeService} from "../../services";
 
 const initialState = {
-    episodeName:"",
-    allEpisodes:[],
-    loading:false,
-    error:null
+    episodeName: "",
+    allEpisodes: [],
+    loading: false,
+    error: null
 }
 const getAll = createAsyncThunk(
     "episodeSlice/getAll",
-    async ({page},thunkAPI)=>{
+    async ({page}, thunkAPI) => {
         try {
             return episodeService.getAll(page)
-        }catch (e){
+        } catch (e) {
             thunkAPI.rejectWithValue(e.data)
         }
     }
@@ -20,30 +20,30 @@ const getAll = createAsyncThunk(
 const episodeSlice = createSlice({
     name: "episodeSlice",
     initialState,
-    reducers:{
-        setEpisodeName:(state, actions )=>{
+    reducers: {
+        setEpisodeName: (state, actions) => {
             state.episodeName = actions.payload
         }
     },
-    extraReducers:builder => builder
-        .addCase(getAll.fulfilled,(state, action) => {
+    extraReducers: builder => builder
+        .addCase(getAll.fulfilled, (state, action) => {
             state.allEpisodes = action.payload
             state.loading = false
         })
-        .addMatcher(isPending(getAll),state => {
+        .addMatcher(isPending(getAll), state => {
             state.loading = true
         })
-        .addMatcher(isRejected(getAll),state => {
-            state.loading = false
-            state.error
-        })
+        .addMatcher(isRejected(getAll), (state, action) => {
+                state.error = action.payload
+            }
+        )
 
 
 })
 
-const {reducer:episodeReducer,actions} = episodeSlice
+const {reducer: episodeReducer, actions} = episodeSlice
 
-const episodeAction = {...actions}
+const episodeAction = {...actions, getAll}
 export {
     episodeAction,
     episodeReducer
