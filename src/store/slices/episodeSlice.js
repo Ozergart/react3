@@ -24,9 +24,10 @@ const episodeSlice = createSlice({
             state.episodeName = actions.payload
         }
     },
-    extraReducers{
+    extraReducers:builder => builder
+        .addCase
 
-    }
+
 })
 
 const {reducer:episodeReducer,actions} = episodeSlice
