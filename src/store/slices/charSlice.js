@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {charService} from "../../services";
 
 const initialState = {
     chars:[],
@@ -8,11 +9,10 @@ const charsByIds = createAsyncThunk(
     'charSlice/charsByIds',
     async ({charMassive},thunkAPI)=>{
         try {
-            const {data} = charsByIds(charMassive)
+            const {data} = await charService.byIds(charMassive)
             return data
-
         }catch (e){
-            thunkAPI.rejectWithValue(e.data)
+            return  thunkAPI.rejectWithValue(e.data)
         }
     }
 )
