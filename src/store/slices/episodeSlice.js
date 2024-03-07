@@ -5,7 +5,8 @@ const initialState = {
     episodeName: "",
     allEpisodes: [],
     loading: false,
-    error: null
+    error: null,
+    prevNext:{prev:null,next:null}
 }
 const getAll = createAsyncThunk(
     "episodeSlice/getAll",
@@ -27,7 +28,9 @@ const episodeSlice = createSlice({
     },
     extraReducers: builder => builder
         .addCase(getAll.fulfilled, (state, action) => {
-            state.allEpisodes = action.payload
+            state.allEpisodes = action.payload.results
+            state.prevNext.prev = action.payload.info.prev
+            state.prevNext.next = action.payload.info.next
             state.loading = false
         })
         .addMatcher(isPending(getAll), state => {
