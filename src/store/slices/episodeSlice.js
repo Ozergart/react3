@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, isPending} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isPending, isRejected} from "@reduxjs/toolkit";
 import {episodeService} from "../../services";
 
 const initialState = {
@@ -30,7 +30,13 @@ const episodeSlice = createSlice({
             state.allEpisodes = action.payload
             state.loading = false
         })
-        .addMatcher(isPending,getAll)
+        .addMatcher(isPending(getAll),state => {
+            state.loading = true
+        })
+        .addMatcher(isRejected(getAll),state => {
+            state.loading = false
+            state.error
+        })
 
 
 })
