@@ -2,16 +2,17 @@ import React, {useContext, useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {charService} from "../services";
 import {Chars} from "../components";
-import {EpisodeNameContext} from "../hoc/episodeNameContext";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {episodeAction} from "../store/slices/episodeSlice";
+import {charAction, charReducer} from "../store/slices/charSlice";
 
 const CharsPage = () => {
 
 
     const {charMassive,name} = useParams();
+    const {chars}=useSelector(state => state.chars)
 
-    const [chars, setChars] = useState([])
+    // const [chars, setChars] = useState([])
     const dispatch = useDispatch()
 
 
@@ -19,21 +20,10 @@ const CharsPage = () => {
     useEffect(() => {
 
         dispatch(episodeAction.setEpisodeName(name))
-        charService.byIds(charMassive).then(({data})=>setChars(data))
+        dispatch(charAction.charsByIds({charMassive}))
+        charService.byIds(charMassive)
 
     }, [charMassive, name]);
-
-    
-    const {setCharacterPageLocation, setEpisodeNameValue} = useContext(EpisodeNameContext);
-    useEffect(() => {
-        setCharacterPageLocation(true);
-        return () => {
-            setCharacterPageLocation(false);
-        };
-    }, [setCharacterPageLocation]);
-
-
-
 
     return (
         <div>

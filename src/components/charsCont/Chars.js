@@ -7,7 +7,7 @@ const Chars = ({chars}) => {
     return (
         <div>
             <button onClick={()=>navigate(-1)}>back</button>
-            {chars.map(char=><Char key={char.id} char={char}/>)}
+            {chars?chars.map(char=><Char key={char.id} char={char}/>):null}
         </div>
     );
 };

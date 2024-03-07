@@ -10,9 +10,9 @@ const initialState = {
 }
 const getAll = createAsyncThunk(
     "episodeSlice/getAll",
-    async (page, thunkAPI) => {
+    async ({page}, thunkAPI) => {
         try {
-            return episodeService.getAll()
+            return episodeService.getAll(page)
         } catch (e) {
             thunkAPI.rejectWithValue(e.data)
         }
@@ -28,9 +28,9 @@ const episodeSlice = createSlice({
     },
     extraReducers: builder => builder
         .addCase(getAll.fulfilled, (state, action) => {
-            state.allEpisodes = action.payload.results
-            state.prevNext.prev = action.payload.info.prev
-            state.prevNext.next = action.payload.info.next
+            state.allEpisodes = action.payload.data.results
+            state.prevNext.prev = action.payload.data.info.prev
+            state.prevNext.next = action.payload.data.info.next
             state.loading = false
         })
         .addMatcher(isPending(getAll), state => {
