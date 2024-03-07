@@ -1,14 +1,16 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-
+    episodeName:""
 }
 
 const episodeSlice = createSlice({
     name: "episodeSlice",
     initialState,
     reducers:{
+        setEpisodeName:()=>{
 
+        }
     }
 })
 
