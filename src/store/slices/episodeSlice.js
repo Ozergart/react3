@@ -10,9 +10,9 @@ const initialState = {
 }
 const getAll = createAsyncThunk(
     "episodeSlice/getAll",
-    async ({page}, thunkAPI) => {
+    async (page, thunkAPI) => {
         try {
-            return episodeService.getAll(page)
+            return episodeService.getAll()
         } catch (e) {
             thunkAPI.rejectWithValue(e.data)
         }

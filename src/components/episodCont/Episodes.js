@@ -9,8 +9,9 @@ import {episodeAction, episodeReducer} from "../../store/slices/episodeSlice";
 
 const Episodes = () => {
 
-    useSelector(episodeReducer)
+    const {prevNext} = useSelector(state => state.episodes)
     const [query, setQuery] = useSearchParams({page:"1"})
+    let page = query.get("page")
     const prev =()=>{
         setQuery(prev=> {
             prev.set("page", `${+prev.get('page')-1}`)
@@ -25,13 +26,7 @@ const Episodes = () => {
     }
     let dispatch = useDispatch;
     useEffect(() => {
-        dispatch(episodeAction.getAll(query.get('page')))
-        episodeService.getAll(query.get('page')).then(({data})=> {
-            setEpisodes(data.results);
-            console.log(data.results);
-            setPrevNext({prev: data.info.prev, next: data.info.next})
-        })
-
+        dispatch(episodeAction.getAll(page))
     }, [query]);
 
     return (
