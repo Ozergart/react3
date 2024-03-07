@@ -4,7 +4,6 @@ const EpisodeNameContext = createContext();
 const EpisodeNameProvider = ({children}) => {
 
     const [episodeName, setEpisodeName] = useState('')
-    const [characterPageLocation, setCharacterPageLocation] = useState(false)
     const setEpisodeNameValue = (name)=> setEpisodeName(name)
 
 
