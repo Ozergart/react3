@@ -1,10 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {charService} from "../services";
 import {Chars} from "../components";
 import {useDispatch, useSelector} from "react-redux";
 import {episodeAction} from "../store/slices/episodeSlice";
-import {charAction, charReducer} from "../store/slices/charSlice";
+import {charAction} from "../store/slices/charSlice";
 
 const CharsPage = () => {
 

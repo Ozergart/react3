@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 
 import css from './Episodes.module.css'
 import {Episode} from "./Episode";
